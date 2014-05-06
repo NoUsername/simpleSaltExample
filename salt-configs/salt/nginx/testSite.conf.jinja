@@ -1,0 +1,10 @@
+server {
+    listen 80;
+    server_name {{ salt['pillar.get']('catcloud:hostname', 'catcloud.me') }};
+    access_log /var/log/nginx/{{ salt['pillar.get']('catcloud:log-prefix', 'catcloud') }}.access.log;
+    error_log /var/log/nginx/{{ salt['pillar.get']('catcloud:log-prefix', 'catcloud') }}.error.log;
+
+    location / {
+        root /var/www;
+    }
+}
